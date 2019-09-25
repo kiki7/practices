@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <input v-model="firstFNumber">
+        <select v-model="symbol">
+            <option value="1">+</option>
+            <option value="2">-</option>
+            <option value="3">×</option>
+            <option value="4">÷</option>
+        </select>
+        <input v-model="secondFNumber">
+        <input type="button" value="=" @click="calculate">
+        <input v-model="result">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el : ".content",
+            data : {
+                firstFNumber : "",
+                secondFNumber : "",
+                symbol : "",
+                result : ""
+            },
+            methods : {
+                calculate:function(){
+                    switch(this.symbol){
+                        case '1':
+                            this.result = parseInt(this.firstFNumber) + parseInt(this.secondFNumber);
+                            break;
+                        case '2':
+                            this.result = parseInt(this.firstFNumber) - parseInt(this.secondFNumber);
+                            break;
+                        case '3':
+                            this.result = parseInt(this.firstFNumber) * parseInt(this.secondFNumber);
+                            break;
+                        case '4':
+                            this.result = parseInt(this.firstFNumber) / parseInt(this.secondFNumber);
+                            break;
+                        default :
+                            this.result = "输入有误！";
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
